@@ -1,0 +1,33 @@
+.calculatorbody{
+    height: 500px;
+    width: 520px;
+    border: 2px solid black;
+    position: relative;
+    background-color:palegoldenrod
+}
+
+.row {
+
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 30px;
+} 
+.screen{
+    min-height: 50px;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 20px 30px;
+    background-color: white
+}
+
+.btn {
+    height:80px;
+    width:110px;
+    font-size:50px;
+    padding:10px 30px;
+    box-sizing: border-box;
+    border: 4px solid black;
+    border-radius: 9px;
+    margin: 0px 5px;
+}
+
