@@ -11,4 +11,5 @@ function removeTransition(e) {
 
 const keys = Array.from(document.querySelectorAll('.btn'));
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+keys.forEach(key => key.addEventListener('click', (e) => e.target.classList.add('pressed')));
 window.addEventListener('keydown', pressKey);
