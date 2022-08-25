@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+Symbols+2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
 </head>
 <body>
     <div class="calculatorbody">
-        <div class="screen"></div>
+        <div class="screen">
+            <h1 class="screendisplay"></h1>
+        </div>
+        <div class =" row row0">
+            <button data-key="67" type="button" class="btn">C</button>
+            <button data-key="46" id="DEL" type="button" class="btn">DEL</button>
+        </div>
         <div class =" row row1">
             <button data-key="103" type="button" class="btn">7</button>
             <button data-key="104" type="button" class="btn">8</button>
