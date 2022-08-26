@@ -1,5 +1,6 @@
 const keys = Array.from(document.querySelectorAll('.btn'));
 const calculatorDisplay = document.querySelector('.screendisplay')
+const operators = '+-*/';
 
 function pressKey(e) {
     const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
@@ -9,10 +10,48 @@ function pressKey(e) {
     }else if (e.key == 'Delete' ) { 
       deleteLast();
     }else if (e.key == '='){
-      calculateSum();  
+      calculateSum();
+    }else if ((operators.indexOf(e.key) > -1) && (checkOperatorPresence())) {
+      checkLastEntry();
+      calculateSum();
+      calculatorDisplay.textContent += e.key;  
     }else {updateDisplay(e.key);}
     
 }
+
+function clickButton(e) {
+  let button = e.textContent;
+  if (button  == 'C'){
+    calculatorDisplay.textContent = "";
+  }else if (button == 'DEL' ) { 
+    deleteLast();
+  }else if (button == '='){
+    calculateSum();
+  }else if ((operators.indexOf(button) > -1) && (checkOperatorPresence())) {
+    calculateSum();
+    calculatorDisplay.textContent += button;  
+  }else {updateDisplay(button);}
+}
+
+
+function checkOperatorPresence() {
+  for (var i = 0; i <operators.length; i++) {
+    if(calculatorDisplay.textContent.includes(operators[i])){
+      return true
+    }
+  };
+};
+
+function checkLastEntry() { // need to finish, need to change final operator
+  let digitToCheck = (calculatorDisplay.textContent.length -1);
+  let currentDisplay = calculatorDisplay.textContent;
+  for (var i = 0; i <operators.length; i++) {
+    if(currentDisplay.charAt(digitToCheck).includes(operators[i])){
+      console.log("test")
+    }
+  };
+};
+
 
 function removeTransition(e) {
     if (e.propertyName !== 'transform') return;
@@ -74,6 +113,7 @@ function calculateSum() {
 
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 keys.forEach(key => key.addEventListener('click', (e) => e.target.classList.add('pressed')));
+keys.forEach(key => key.addEventListener('click', (e) => clickButton(e.target)));
 window.addEventListener('keydown', pressKey);
 
 
