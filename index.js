@@ -33,8 +33,14 @@ function clickButton(e) {
   }else if (button == '='){
     calculateSum();
   }else if ((operators.indexOf(button) > -1) && (checkOperatorPresence())) {
-    calculateSum();
-    calculatorDisplay.textContent += button;  
+    if (checkLastEntry()){
+      let currentDisplay = calculatorDisplay.textContent;
+      let updatedDisplay = currentDisplay.substring(0, currentDisplay.length-1)
+      calculatorDisplay.textContent = updatedDisplay;
+    }
+      else 
+      calculateSum();
+      calculatorDisplay.textContent += button; 
   }else {updateDisplay(button);}
 }
 
