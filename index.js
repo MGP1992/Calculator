@@ -1,6 +1,6 @@
 const keys = Array.from(document.querySelectorAll('.btn'));
 const calculatorDisplay = document.querySelector('.screendisplay')
-const operators = '+-*/';
+const operators = '+-*/.';
 
 function pressKey(e) {
     const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
@@ -53,18 +53,15 @@ function checkOperatorPresence() {
   };
 };
 
-function checkLastEntry() { // need to finish, need to change final operator
+function checkLastEntry() { 
   let digitToCheck = (calculatorDisplay.textContent.length -1);
   let currentDisplay = calculatorDisplay.textContent;
   for (var i = 0; i <operators.length; i++) {
     if(currentDisplay.charAt(digitToCheck).includes(operators[i])){
-      console.log("test");
       return true;
     }
-  return;
   };
 };
-
 
 function removeTransition(e) {
     if (e.propertyName !== 'transform') return;
@@ -120,9 +117,6 @@ function calculateSum() {
     }
   };
 };
-
-
- 
 
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 keys.forEach(key => key.addEventListener('click', (e) => e.target.classList.add('pressed')));
