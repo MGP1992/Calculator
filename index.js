@@ -104,9 +104,17 @@ function calculateSum() {
     let valueAfterOperator = currentDisplay.substring(i+1)
     if(currentDisplay[i] === '*') {
       newDisplay = multiply(valueBeforeOperator,valueAfterOperator)
+      if (newDisplay === Infinity){
+        calculatorDisplay.textContent = 'To infinity and beyond!';
+      }
+      else
       calculatorDisplay.textContent = newDisplay;
     }else if(currentDisplay[i] === '/') {
       newDisplay = divide(valueBeforeOperator,valueAfterOperator)
+      if (newDisplay === Infinity){
+        calculatorDisplay.textContent = 'To infinity and beyond!';
+      }
+      else
       calculatorDisplay.textContent = newDisplay;
     }else if(currentDisplay[i] === '+') {
       newDisplay = add(valueBeforeOperator,valueAfterOperator)
