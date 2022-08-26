@@ -12,9 +12,14 @@ function pressKey(e) {
     }else if (e.key == '='){
       calculateSum();
     }else if ((operators.indexOf(e.key) > -1) && (checkOperatorPresence())) {
-      checkLastEntry();
-      calculateSum();
-      calculatorDisplay.textContent += e.key;  
+      if (checkLastEntry()){
+        let currentDisplay = calculatorDisplay.textContent;
+        let updatedDisplay = currentDisplay.substring(0, currentDisplay.length-1)
+        calculatorDisplay.textContent = updatedDisplay;
+      }
+        else 
+        calculateSum();
+        calculatorDisplay.textContent += e.key; 
     }else {updateDisplay(e.key);}
     
 }
@@ -47,8 +52,10 @@ function checkLastEntry() { // need to finish, need to change final operator
   let currentDisplay = calculatorDisplay.textContent;
   for (var i = 0; i <operators.length; i++) {
     if(currentDisplay.charAt(digitToCheck).includes(operators[i])){
-      console.log("test")
+      console.log("test");
+      return true;
     }
+  return;
   };
 };
 
